@@ -1,0 +1,233 @@
+{
+ "PL": {
+  "name": "Poland",
+  "iso3": "POL",
+  "carsPer1000": 639,
+  "carsYear": "2025",
+  "bev": 0.44,
+  "fuelYear": "2025",
+  "roadNOx": 33.2,
+  "emisYear": "2024"
+ },
+ "CZ": {
+  "name": "Czechia",
+  "iso3": "CZE",
+  "carsPer1000": 621,
+  "carsYear": "2025",
+  "diesel": 37.6,
+  "bev": 0.85,
+  "fuelYear": "2025",
+  "roadNOx": 35.1,
+  "emisYear": "2024"
+ },
+ "SK": {
+  "name": "Slovakia",
+  "iso3": "SVK",
+  "carsPer1000": 512,
+  "carsYear": "2025",
+  "bev": 0.68,
+  "fuelYear": "2025",
+  "roadNOx": 32.9,
+  "emisYear": "2024"
+ },
+ "HU": {
+  "name": "Hungary",
+  "iso3": "HUN",
+  "carsPer1000": 461,
+  "carsYear": "2025",
+  "over20": 30.9,
+  "over10": 72.0,
+  "ageYear": "2025",
+  "diesel": 31.9,
+  "bev": 1.97,
+  "fuelYear": "2025",
+  "roadNOx": 39.0,
+  "emisYear": "2024"
+ },
+ "RO": {
+  "name": "Romania",
+  "iso3": "ROU",
+  "carsPer1000": 461,
+  "carsYear": "2025",
+  "over20": 39.1,
+  "over10": 80.3,
+  "ageYear": "2025",
+  "diesel": 51.3,
+  "bev": 0.7,
+  "fuelYear": "2025",
+  "roadNOx": 45.7,
+  "emisYear": "2024"
+ },
+ "BG": {
+  "name": "Bulgaria",
+  "iso3": "BGR",
+  "carsPer1000": 507,
+  "carsYear": "2025",
+  "diesel": 49.3,
+  "bev": 0.66,
+  "fuelYear": "2025",
+  "roadNOx": 45.9,
+  "emisYear": "2024"
+ },
+ "SI": {
+  "name": "Slovenia",
+  "iso3": "SVN",
+  "carsPer1000": 603,
+  "carsYear": "2025",
+  "over20": 13.2,
+  "over10": 54.5,
+  "ageYear": "2025",
+  "diesel": 47.1,
+  "bev": 1.91,
+  "fuelYear": "2025",
+  "roadNOx": 42.8,
+  "emisYear": "2024"
+ },
+ "HR": {
+  "name": "Croatia",
+  "iso3": "HRV",
+  "carsPer1000": 531,
+  "carsYear": "2025",
+  "over20": 19.0,
+  "over10": 61.8,
+  "ageYear": "2025",
+  "diesel": 55.6,
+  "bev": 0.61,
+  "fuelYear": "2025",
+  "roadNOx": 49.0,
+  "emisYear": "2024"
+ },
+ "EE": {
+  "name": "Estonia",
+  "iso3": "EST",
+  "carsPer1000": 595,
+  "carsYear": "2025",
+  "over20": 34.7,
+  "over10": 70.4,
+  "ageYear": "2025",
+  "diesel": 43.4,
+  "bev": 1.26,
+  "fuelYear": "2025",
+  "roadNOx": 27.9,
+  "emisYear": "2024"
+ },
+ "LV": {
+  "name": "Latvia",
+  "iso3": "LVA",
+  "carsPer1000": 435,
+  "carsYear": "2025",
+  "over20": 28.4,
+  "over10": 75.3,
+  "ageYear": "2025",
+  "diesel": 65.5,
+  "bev": 1.73,
+  "fuelYear": "2025",
+  "roadNOx": 29.9,
+  "emisYear": "2024"
+ },
+ "LT": {
+  "name": "Lithuania",
+  "iso3": "LTU",
+  "carsPer1000": 629,
+  "carsYear": "2025",
+  "over20": 29.4,
+  "over10": 75.3,
+  "ageYear": "2025",
+  "diesel": 63.9,
+  "bev": 1.27,
+  "fuelYear": "2025",
+  "roadNOx": 38.9,
+  "emisYear": "2024"
+ },
+ "RS": {
+  "name": "Serbia",
+  "iso3": "SRB",
+  "carsPer1000": 394,
+  "carsYear": "2025",
+  "over20": 35.3,
+  "over10": 82.7,
+  "ageYear": "2025",
+  "diesel": 56.2,
+  "bev": 0.18,
+  "fuelYear": "2025"
+ },
+ "BA": {
+  "name": "Bosnia and Herzegovina",
+  "iso3": "BIH",
+  "carsPer1000": 336,
+  "carsYear": "2025",
+  "over20": 11.0,
+  "over10": 59.8,
+  "ageYear": "2025",
+  "diesel": 78.5,
+  "bev": 0.06,
+  "fuelYear": "2025"
+ },
+ "ME": {
+  "name": "Montenegro",
+  "iso3": "MNE",
+  "carsPer1000": 442,
+  "carsYear": "2025",
+  "over20": 29.1,
+  "over10": 79.0,
+  "ageYear": "2025",
+  "diesel": 80.3,
+  "bev": 0.28,
+  "fuelYear": "2025"
+ },
+ "MK": {
+  "name": "North Macedonia",
+  "iso3": "MKD",
+  "carsPer1000": 338,
+  "carsYear": "2025",
+  "diesel": 63.8,
+  "bev": 0.33,
+  "fuelYear": "2025"
+ },
+ "AL": {
+  "name": "Albania",
+  "iso3": "ALB",
+  "carsPer1000": 328,
+  "carsYear": "2024",
+  "over20": 43.2,
+  "over10": 91.1,
+  "ageYear": "2024",
+  "diesel": 72.4,
+  "bev": 1.29,
+  "fuelYear": "2025"
+ },
+ "XK": {
+  "name": "Kosovo",
+  "iso3": "XKX",
+  "carsPer1000": 241,
+  "carsYear": "2025",
+  "over20": 36.5,
+  "over10": 78.8,
+  "ageYear": "2025",
+  "diesel": 83.7,
+  "bev": 0.34,
+  "fuelYear": "2025"
+ },
+ "UA": {
+  "name": "Ukraine",
+  "iso3": "UKR"
+ },
+ "BY": {
+  "name": "Belarus",
+  "iso3": "BLR"
+ },
+ "MD": {
+  "name": "Moldova",
+  "iso3": "MDA"
+ },
+ "EU27_2020": {
+  "name": "EU-27 average",
+  "iso3": "EU27",
+  "carsPer1000": 584,
+  "carsYear": "2025",
+  "bev": 2.88,
+  "fuelYear": "2025",
+  "roadNOx": 35.5,
+  "emisYear": "2024"
+ }
+}

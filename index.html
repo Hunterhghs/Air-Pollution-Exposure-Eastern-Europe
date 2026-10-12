@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Urban Air Exposure: Eastern Europe</title>
+  <meta name="description" content="Interactive map of human exposure to NO₂ and PM2.5 in Eastern European cities, with a focus on traffic and vehicle emissions. EEA and WHO monitoring data, 2013–2025.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='13' fill='%23dc6a2c'/><circle cx='16' cy='16' r='6' fill='%23fbd0a3'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.css">
+  <link rel="stylesheet" href="assets/style.css">
+  <script>
+    // Apply a stored theme before first paint to avoid a flash.
+    try { const t = localStorage.getItem("aq-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="app">
+  <header class="top">
+    <div class="brand">
+      <h1>Urban Air Exposure <span>· Eastern Europe</span></h1>
+      <p class="lede">What city residents breathe, and how much of it comes from traffic. Annual NO₂ and PM2.5 at <span id="nStations">1,000+</span> monitoring stations across <span id="nCities">400</span> cities, 2013–2025.</p>
+    </div>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle light or dark theme" title="Toggle theme">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.39 5.39 0 0 1-4.4 2.26 5.4 5.4 0 0 1-3.14-9.8C12.92 3.04 12.46 3 12 3Z"/></svg>
+    </button>
+  </header>
+
+  <div class="controls" role="toolbar" aria-label="Map filters">
+    <div class="ctl">
+      <span class="ctl-label" id="lblPol">Pollutant</span>
+      <div class="seg" role="radiogroup" aria-labelledby="lblPol" data-key="pol">
+        <button type="button" role="radio" data-v="no2">NO₂ <small>traffic marker</small></button>
+        <button type="button" role="radio" data-v="pm25">PM2.5</button>
+      </div>
+    </div>
+    <div class="ctl">
+      <span class="ctl-label" id="lblMeasure">Stations</span>
+      <div class="seg" role="radiogroup" aria-labelledby="lblMeasure" data-key="measure">
+        <button type="button" role="radio" data-v="all"><span class="wide">City average</span><span class="narrow">City avg</span></button>
+        <button type="button" role="radio" data-v="T">Traffic</button>
+        <button type="button" role="radio" data-v="B">Background</button>
+        <button type="button" role="radio" data-v="X"><span class="wide">Roadside excess</span><span class="narrow">Excess</span></button>
+      </div>
+    </div>
+    <div class="ctl">
+      <label class="ctl-label" for="yearSel">Year</label>
+      <select id="yearSel"></select>
+    </div>
+    <div class="ctl">
+      <label class="ctl-label" for="ccSel">Country</label>
+      <select id="ccSel"></select>
+    </div>
+    <div class="ctl toggles">
+      <label><input type="checkbox" id="stToggle" checked> Stations</label>
+      <label><input type="checkbox" id="cfToggle" checked> Country shading</label>
+    </div>
+  </div>
+
+  <main class="layout">
+    <section class="map-wrap" aria-label="Map">
+      <div id="map"></div>
+      <div class="legend" id="legend" aria-live="polite"></div>
+      <div class="tip" id="tip" role="tooltip" hidden></div>
+      <div class="loading" id="loading">Loading monitoring data…</div>
+    </section>
+
+    <aside class="panel" id="panel">
+      <div id="overview">
+        <div class="scope" id="scope"></div>
+        <div class="kpis" id="kpis"></div>
+
+        <section class="card">
+          <h2 id="gapTitle">Traffic vs background</h2>
+          <p class="sub" id="gapSub"></p>
+          <div class="chart-legend" id="gapLegend"></div>
+          <div id="gapChart"></div>
+        </section>
+
+        <section class="card">
+          <h2 id="rankTitle">Most exposed cities</h2>
+          <p class="sub" id="rankSub"></p>
+          <ol class="rank" id="rank"></ol>
+        </section>
+
+        <section class="card">
+          <h2>Vehicle fleet context</h2>
+          <p class="sub">Why traffic pollution is high: older, diesel-heavy fleets. Latest Eurostat data; “—” = not reported.</p>
+          <div class="table-scroll"><table class="fleet" id="fleet"></table></div>
+        </section>
+      </div>
+
+      <div id="detail" hidden></div>
+    </aside>
+  </main>
+  </div>
+
+  <footer class="foot">
+    <details>
+      <summary>Sources, method & caveats</summary>
+      <div class="foot-body">
+        <p><strong>Air quality.</strong> Station annual means for NO₂ and PM2.5 from the
+          <a href="https://discodata.eea.europa.eu/" target="_blank" rel="noopener">European Environment Agency</a>
+          (AirQualityStatistics, validated E1a data, data-coverage filter applied), 2013–2025, for EU members, the Western Balkans and Kosovo.
+          Ukraine and Belarus are city-level means from the
+          <a href="https://www.who.int/publications/m/item/who-ambient-air-quality-database-(update-jun-2026)" target="_blank" rel="noopener">WHO Ambient Air Quality Database v8 (June 2026)</a>,
+          which has no traffic/background split. Moldova reports no data to either source.</p>
+        <p><strong>Cities.</strong> Urban and suburban stations are grouped to the largest
+          <a href="https://www.geonames.org/" target="_blank" rel="noopener">GeoNames</a> city whose catchment covers them
+          (radius grows with population, max 20 km). Population is the GeoNames city figure, not the metro area.</p>
+        <p><strong>Measures.</strong> <em>Traffic</em> stations sit beside busy roads; <em>background</em> stations measure the general urban air most residents breathe at home.
+          <em>Roadside excess</em> = traffic minus background, a direct read of the local vehicle contribution.
+          NO₂ is the main traffic marker; road transport is roughly a third to a half of national NOx emissions and a much larger share at street level.
+          Population exposure KPIs use background stations where a city has them, otherwise the all-station average.</p>
+        <p><strong>Thresholds (annual mean, µg/m³).</strong> WHO 2021 guideline: NO₂ 10, PM2.5 5. EU limit from 2030 (Directive 2024/2881): NO₂ 20, PM2.5 10. Current EU limit: NO₂ 40, PM2.5 25.</p>
+        <p><strong>Vehicle fleet.</strong> Eurostat road_eqs_carhab, road_eqs_carage, road_eqs_carpda; NOx road-transport share (exhaust, NFR 1A3b i–iv) from env_air_emis.</p>
+        <p><strong>Caveats.</strong> Station networks differ by country and change over time, so year-to-year changes for one city can reflect stations opening or closing. Coverage is a sample of cities, not the whole population. Values are measurements, not modelled exposure.</p>
+        <p class="muted">Built with MapLibre GL and CARTO basemaps (© OpenStreetMap contributors, © CARTO). Boundaries: Natural Earth via world-atlas, with Crimea shown as part of Ukraine.</p>
+      </div>
+    </details>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
